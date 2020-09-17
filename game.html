@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="./css/game.css" />
+    <style>
+      small {
+        margin: 0;
+      }
+    </style>
+    <title>Quick Quiz</title>
+  </head>
+  <body>
+    <div class="container d-flex main" style="margin-top: 12%">
+      <div class="m-auto py-5">
+        <div class="container">
+          <div class="row justify-content-between text-center">
+            <div>
+              <div class="d-flex">
+                <p class="h3 mr-2">Question:</p>
+                <p class="h3 text-secondary" id="questionCounter"></p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 0%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <p class="h3">Score</p>
+              <p class="h1 text-secondary" id="score">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h1 class="text-primary h2 mb-4">Quick Quiz: Play</h1>
+          <div
+            class="text-left d-flex justify-content-between"
+            style="width: 100%"
+          >
+            <small>Difficulty: <span class="difficulty"></span></small>
+            <small>Category: <span class="category"></span></small>
+          </div>
+          <h2 class="h3" id="question">What is the answer to our question?</h2>
+        </div>
+        <div class="d-flex choice-container my-4">
+          <div class="d-flex" style="height: 100%">
+            <span class="p-4 h3 choice-prefix m-auto">A</span>
+          </div>
+          <div class="pl-3 pt-4 pb-3 h3 choice-text" data-number="1" style="">
+            Choice 1
+          </div>
+        </div>
+        <div class="d-flex choice-container my-4">
+          <div class="d-flex" style="height: 100%">
+            <span class="p-4 h3 choice-prefix m-auto">B</span>
+          </div>
+          <div class="pl-3 pt-4 pb-3 h3 choice-text" data-number="2">
+            Choice 2
+          </div>
+        </div>
+        <div class="d-flex choice-container my-4">
+          <div class="d-flex" style="height: 100%">
+            <span class="p-4 h3 choice-prefix m-auto">C</span>
+          </div>
+          <div class="pl-3 pt-4 pb-3 h3 choice-text" data-number="3">
+            Choice 3
+          </div>
+        </div>
+        <div class="d-flex choice-container my-4">
+          <div class="d-flex" style="height: 100%">
+            <span class="p-4 h3 choice-prefix m-auto">D</span>
+          </div>
+          <div class="pl-3 pt-4 pb-3 h3 choice-text" data-number="4">
+            Choice 4
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/game.js"></script>
+  </body>
+</html>

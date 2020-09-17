@@ -1,0 +1,19 @@
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 7px 15px #495057;
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+.choice-container span {
+  background-color: #495057;
+  color: #ffffff;
+  border: 3px solid #495057;
+}
+.choice-text {
+  border: 1px solid #495057;
+  width: 100%;
+}
+.choice-prefix,
+.choice-text {
+  margin-bottom: 0;
+}

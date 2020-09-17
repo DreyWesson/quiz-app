@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card? ",
+    "choice1": "Single",
+    "choice2": "Secure",
+    "choice3": "Solid",
+    "choice4": "Subscriber",
+    "answer": 4
+  },
+  {
+    "question": "What is the unit of currency in Laos? ",
+    "choice1": "Kip",
+    "choice2": "Konra",
+    "choice3": "Dollar",
+    "choice4": "Ruble",
+    "answer": 1
+  },
+  {
+    "question": "Five dollars is worth how many nickles?",
+    "choice1": "50",
+    "choice2": "100",
+    "choice3": "25",
+    "choice4": "39",
+    "answer": 2
+  }
+]

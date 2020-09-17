@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/app.css" />
+    <title>Quick Quiz</title>
+  </head>
+  <body>
+    <div class="container d-flex text-center main" style="margin-top: 15%">
+      <div class="m-auto py-3">
+        <h1>Quick Quiz</h1>
+        <div class="d-flex flex-column">
+          <a href="/game.html">
+            <button class="btn btn-outline-primary my-1">Play</button>
+          </a>
+          <button class="btn btn-outline-primary my-1 high-score-btn">
+            High Scores
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center py-4 d-none high-scores-section">
+      <h2>High Score List</h2>
+      <table class="table" style="max-width: 50rem; margin: 0 auto">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="h4">#</th>
+            <th scope="col" class="h4">First</th>
+            <th scope="col" class="h4">Last</th>
+          </tr>
+        </thead>
+        <tbody id="high-scores-list"></tbody>
+      </table>
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

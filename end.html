@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/app.css" />
+    <title>Congrats</title>
+  </head>
+  <body>
+    <div class="container d-flex text-center main" style="margin-top: 12%">
+      <div class="m-auto py-5">
+        <h1>Quick Quiz: Ends</h1>
+
+        <div class="d-flex text-center">
+          <div class="m-auto d-flex">
+            <p class="h3 mr-3">Final Score:</p>
+            <p class="h3 text-secondary finalScore" id="score">0</p>
+          </div>
+        </div>
+
+        <form action="" class="mt-3 mb-4">
+          <div class="input-group mb-3">
+            <input
+              id="username"
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button
+                id="saveScoreBtn"
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="saveHighScore(event)"
+                disabled
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="d-flex">
+          <a href="/game.html" class="mr-2">
+            <button class="btn btn-outline-primary my-1">Play</button>
+          </a>
+          <a href="/">
+            <button class="btn btn-outline-primary my-1">Go Home</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="./js/end.js"></script>
+  </body>
+</html>
