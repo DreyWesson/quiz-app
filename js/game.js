@@ -1,7 +1,39 @@
-const choices = [...document.querySelectorAll(".choice-text")],
+const valueDelivery = JSON.parse(localStorage.getItem("formFetchValues")),
+  catObject = {
+    random: "random",
+    generalknowledge: 9,
+    books: 10,
+    film: 11,
+    music: 12,
+    musicalstheaters: 13,
+    television: 14,
+    videoGame: 15,
+    boardGame: 16,
+    scienceNature: 17,
+    computers: 18,
+    mathematics: 19,
+    mythology: 20,
+    sports: 21,
+    geography: 22,
+    history: 23,
+    politics: 24,
+    art: 25,
+    celebrities: 26,
+    animals: 27,
+    vehicles: 28,
+    comics: 29,
+    gadgets: 30,
+    japaneseanimemanga: 31,
+    cartoonsanimations: 32,
+  },
+  setDifficulty = valueDelivery.selectDifficulty,
+  setCategory = valueDelivery.catSelect,
+  setNumber = valueDelivery.numSelect,
+  getCatValue = catObject[setCategory],
+  choices = [...document.querySelectorAll(".choice-text")],
   question = document.getElementById("question"),
   CORRECT_BONUS = 10,
-  MAX_QUESTION = 3,
+  MAX_QUESTION = setNumber,
   questionCounterText = document.getElementById("questionCounter"),
   scoreText = document.getElementById("score"),
   difficulty = document.querySelector(".difficulty"),
@@ -15,37 +47,43 @@ let currentQuestion = {},
   questions = [],
   progressBar = document.querySelector(".progress-bar");
 
-// Customize fetch
+// Customize fetch request
+const init = (e) => {
+  const screenOutRandom =
+    catObject[setCategory] == "random" || setDifficulty == "random"
+      ? `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`
+      : `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&difficulty=${setDifficulty}&type=multiple`;
+  // Populate questions  with Questions from API
+  fetch(screenOutRandom)
+    .then((res) => res.json())
+    .then((loadedQuestions) => {
+      questions = loadedQuestions.results.map((loadedQuestion) => {
+        const formattedQuestion = {
+          question: loadedQuestion.question,
+          difficulty: loadedQuestion.difficulty,
+          category: loadedQuestion.category,
+        };
 
-// Populate questions  with Questions from API
-fetch("https://opentdb.com/api.php?amount=10&type=multiple")
-  .then((res) => res.json())
-  .then((loadedQuestions) => {
-    questions = loadedQuestions.results.map((loadedQuestion) => {
-      const formattedQuestion = {
-        question: loadedQuestion.question,
-        difficulty: loadedQuestion.difficulty,
-        category: loadedQuestion.category,
-      };
+        const answerChoices = [...loadedQuestion.incorrect_answers];
 
-      const answerChoices = [...loadedQuestion.incorrect_answers];
-
-      formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
-      answerChoices.splice(
-        formattedQuestion.answer - 1,
-        0,
-        loadedQuestion.correct_answer
-      );
-      answerChoices.forEach(
-        (choice, index) => (formattedQuestion["choice" + (index + 1)] = choice)
-      );
-      return formattedQuestion;
+        formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+        answerChoices.splice(
+          formattedQuestion.answer - 1,
+          0,
+          loadedQuestion.correct_answer
+        );
+        answerChoices.forEach(
+          (choice, index) =>
+            (formattedQuestion["choice" + (index + 1)] = choice)
+        );
+        return formattedQuestion;
+      });
+      startGame();
+    })
+    .catch((err) => {
+      console.error(err);
     });
-    startGame();
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+};
 let startGame = () => {
   questionCounter = 0;
   score = 0;
@@ -115,3 +153,7 @@ const incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+});
