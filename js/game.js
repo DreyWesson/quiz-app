@@ -26,6 +26,8 @@ const valueDelivery = JSON.parse(localStorage.getItem("formFetchValues")),
     japaneseanimemanga: 31,
     cartoonsanimations: 32,
   },
+  loader = document.getElementById("loader"),
+  game = document.getElementById("game"),
   setDifficulty = valueDelivery.selectDifficulty,
   setCategory = valueDelivery.catSelect,
   setNumber = valueDelivery.numSelect,
@@ -89,6 +91,8 @@ let startGame = () => {
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  game.classList.remove("d-none");
+  loader.classList.add("d-none");
 };
 
 let getNewQuestion = () => {

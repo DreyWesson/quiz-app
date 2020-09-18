@@ -17,3 +17,20 @@
 .choice-text {
   margin-bottom: 0;
 }
+
+#loader {
+  border: 1rem solid #f8f9fa;
+  border-radius: 50%;
+  border-top: 1rem solid #007bff;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
