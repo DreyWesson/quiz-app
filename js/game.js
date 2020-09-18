@@ -51,6 +51,7 @@ let currentQuestion = {},
 
 // Customize fetch request
 const init = (e) => {
+  // Use different API for random settings
   const screenOutRandom =
     catObject[setCategory] == "random" || setDifficulty == "random"
       ? `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`
@@ -59,16 +60,16 @@ const init = (e) => {
   fetch(screenOutRandom)
     .then((res) => res.json())
     .then((loadedQuestions) => {
+      console.log(loadedQuestions.results);
       questions = loadedQuestions.results.map((loadedQuestion) => {
         const formattedQuestion = {
-          question: loadedQuestion.question,
-          difficulty: loadedQuestion.difficulty,
-          category: loadedQuestion.category,
-        };
-
-        const answerChoices = [...loadedQuestion.incorrect_answers];
-
-        formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+            question: loadedQuestion.question,
+            difficulty: loadedQuestion.difficulty,
+            category: loadedQuestion.category,
+          },
+          answerChoices = [...loadedQuestion.incorrect_answers];
+        // changed number from 3 to 4, cos that seem to utilize the whole choices slot for correct answer
+        formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
         answerChoices.splice(
           formattedQuestion.answer - 1,
           0,
@@ -122,7 +123,7 @@ let getNewQuestion = () => {
   difficulty.innerText = currentQuestion.difficulty;
   category.innerText = currentQuestion.category;
 
-  // Slot in the multiple choices
+  // Slot in the multiple choices from our question object
   choices.map((choice) => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion[`choice${number}`];
@@ -147,8 +148,16 @@ choices.forEach((choice) => {
     // Increment Scoreboard
     checkCorrectness == "alert-success" ? incrementScore(CORRECT_BONUS) : null;
     selectedChoice.parentElement.classList.add(checkCorrectness);
+
+    //using the dataset to track the element carrying d
+    //  correct answer in our choices and change its color
+    const dataNumber = choices[currentQuestion.answer - 1];
+    if (checkCorrectness == "alert-danger")
+      dataNumber.classList.add("alert-success");
+
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(checkCorrectness);
+      dataNumber.classList.remove("alert-success");
       getNewQuestion();
     }, 1000);
   });

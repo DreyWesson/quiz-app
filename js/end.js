@@ -5,7 +5,7 @@ const username = document.getElementById("username"),
   highScores = JSON.parse(localStorage.getItem("highScores")) || [],
   MAX_HIGH_SCORES = 5;
 finalScore.innerText = latestScore;
-
+console.log(highScores);
 username.addEventListener("keyup", (e) => {
   // if value is falsy disable button
   saveScoreBtn.disabled = !username.value;
