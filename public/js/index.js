@@ -6,6 +6,11 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 var height = highScoreSection.clientHeight;
 var width = highScoreSection.clientWidth;
 
+// Ckeck if localStorage has no highscores
+if (localStorage.getItem("highScore") === null) {
+  const emptyHighScore = document.querySelector(".emptyHighScore");
+  emptyHighScore.classList.remove("d-none");
+}
 if (screen.width > 750) {
   // Initial visibility settings
   visibility("30", "30", "0", "hidden");
