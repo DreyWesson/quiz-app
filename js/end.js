@@ -4,6 +4,7 @@ const username = document.getElementById("username"),
   category = document.getElementById("category"),
   percentageScore = document.getElementById("percentageScore"),
   progressBar = document.getElementById("progress-bar"),
+  sweetMessage = document.getElementById("sweetMessage"),
   finalScore = document.querySelector(".finalScore"),
   latestScore = localStorage.getItem("latestScore"),
   maxScore = localStorage.getItem("maxScore"),
@@ -20,7 +21,7 @@ percentageScore.innerText = `${setPercentage}%`;
 progressBar.setAttribute("aria-valuenow", `${setPercentage}`);
 
 if (maxScore == latestScore) {
-  // sweetMessage.innerText = "You Cracked it!!!";
+  sweetMessage.innerText = "You cracked it!!!";
   progressBar.classList.remove("bg-primary");
   progressBar.classList.add("bg-success");
 } else if (latestScore > 50 && latestScore < maxScore)
