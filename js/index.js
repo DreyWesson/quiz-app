@@ -3,50 +3,32 @@ const highScoreList = document.querySelector("#high-scores-list");
 const highScoreBtn = document.querySelector(".high-score-btn");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-// highScoreBtn.addEventListener("click", () => {
-//   highScoreSection.classList.toggle("d-none");
-// });
 var height = highScoreSection.clientHeight;
 var width = highScoreSection.clientWidth;
 
-// initialize them (within highScoreSection.style)
-
 if (screen.width > 750) {
-  highScoreSection.style.height = "30%";
-  highScoreSection.style.width = "30%";
-  highScoreSection.style.opacity = "0";
-
+  // Initial visibility settings
+  visibility("30", "30", "0", "hidden");
   highScoreBtn.addEventListener("click", function () {
-    if (highScoreSection.style.visibility == "hidden") {
-      highScoreSection.style.visibility = "visible";
-      highScoreSection.style.opacity = "1";
-      highScoreSection.style.height = "100%";
-      highScoreSection.style.width = "100%";
-    } else {
-      highScoreSection.style.visibility = "hidden";
-      highScoreSection.style.opacity = "0";
-      highScoreSection.style.height = "0";
-      highScoreSection.style.width = "20%";
-    }
+    if (highScoreSection.style.visibility == "hidden")
+      visibility("100", "100", "1", "visible");
+    else visibility("20", "20", "0", "hidden");
   });
 } else {
-  highScoreSection.style.height = "60%";
-  highScoreSection.style.width = "60%";
-  highScoreSection.style.opacity = "0";
-
+  // Initial visibility settings
+  visibility("60", "60", "0", "hidden");
   highScoreBtn.addEventListener("click", function () {
-    if (highScoreSection.style.visibility == "hidden") {
-      highScoreSection.style.visibility = "visible";
-      highScoreSection.style.opacity = "1";
-      highScoreSection.style.height = "100%";
-      highScoreSection.style.width = "100%";
-    } else {
-      highScoreSection.style.visibility = "hidden";
-      highScoreSection.style.opacity = "0";
-      highScoreSection.style.height = "0";
-      highScoreSection.style.width = "70%";
-    }
+    if (highScoreSection.style.visibility == "hidden")
+      visibility("100", "100", "1", "visible");
+    else visibility("70", "70", "0", "hidden");
   });
+}
+
+function visibility(height, width, opacity, visibility) {
+  highScoreSection.style.height = `${height}%`;
+  highScoreSection.style.width = `${width}%`;
+  highScoreSection.style.opacity = `${opacity}`;
+  highScoreSection.style.visibility = `${visibility}`;
 }
 
 let increment = 0;
