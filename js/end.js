@@ -5,6 +5,7 @@ const username = document.getElementById("username"),
   percentageScore = document.getElementById("percentageScore"),
   progressBar = document.getElementById("progress-bar"),
   sweetMessage = document.getElementById("sweetMessage"),
+  thumbsUp = document.querySelector(".thumbs-up"),
   finalScore = document.querySelector(".finalScore"),
   latestScore = localStorage.getItem("latestScore"),
   maxScore = localStorage.getItem("maxScore"),
@@ -24,6 +25,7 @@ if (maxScore == latestScore) {
   sweetMessage.innerText = "You cracked it!!!";
   progressBar.classList.remove("bg-primary");
   progressBar.classList.add("bg-success");
+  thumbsUp.classList.remove("d-none");
 } else if (latestScore > 50 && latestScore < maxScore)
   progressBar.classList.add("bg-primary");
 else if (latestScore < 50) progressBar.classList.add("bg-danger");
