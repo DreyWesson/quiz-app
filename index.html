@@ -9,6 +9,18 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
     <style>
       :root {
         font-size: 62.5%;
@@ -114,7 +126,7 @@
       style="visibility: hidden"
     >
       <h2>High Score List</h2>
-      <p class="h4">Your top 5 scores</p>
+      <p class="h4 text-success">Your top 5 scores</p>
       <table class="table" style="max-width: 50rem; margin: 0 auto">
         <thead class="thead-light">
           <tr>
@@ -126,8 +138,14 @@
         <tbody id="high-scores-list"></tbody>
       </table>
       <div class="emptyHighScore d-none">
-        <h2 class="h3 my-3 text-danger">Oops, no high score yet!</h2>
-        <h3 class="h4 my-3">Click the Play button.</h3>
+        <h2 class="h3 my-3">
+          <i class="far fa-frown 2 mr-3 text-danger"></i>Oops, no high score
+          yet!
+        </h2>
+        <h3 class="h3 my-3">
+          <i class="far fa-smile 2 mr-3 text-success"></i>Click the
+          <strong>Play</strong> button.
+        </h3>
       </div>
     </div>
     <script src="/js/index.js"></script>

@@ -1,16 +1,16 @@
-const highScoreSection = document.querySelector(".high-scores-section");
-const highScoreList = document.querySelector("#high-scores-list");
-const highScoreBtn = document.querySelector(".high-score-btn");
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highScoreSection = document.querySelector(".high-scores-section"),
+  highScoreList = document.querySelector("#high-scores-list"),
+  highScoreBtn = document.querySelector(".high-score-btn"),
+  highScores = JSON.parse(localStorage.getItem("highScores")) || [],
+  emptyHighScore = document.querySelector(".emptyHighScore");
 
-var height = highScoreSection.clientHeight;
-var width = highScoreSection.clientWidth;
+let height = highScoreSection.clientHeight,
+  width = highScoreSection.clientWidth;
 
 // Ckeck if localStorage has no highscores
-if (localStorage.getItem("highScore") === null) {
-  const emptyHighScore = document.querySelector(".emptyHighScore");
+if (localStorage.getItem("highScores") === null)
   emptyHighScore.classList.remove("d-none");
-}
+
 if (screen.width > 750) {
   // Initial visibility settings
   visibility("30", "30", "0", "hidden");

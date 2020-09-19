@@ -1,7 +1,6 @@
 const express = require("express"),
   app = express();
 app.set("port", process.env.PORT || 3000);
-
 app.use(express.static(__dirname + "/public"));
 app.use("/views", express.static(__dirname + "/views"));
 app.get("/", (req, res) => {
