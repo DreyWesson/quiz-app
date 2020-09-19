@@ -85,7 +85,7 @@ const init = (e) => {
         numSelect: `${numSelect.value}`,
       })
     );
-    window.document.location = "/game.html";
+    window.document.location = "../views/game.html";
   });
 };
 document.addEventListener("DOMContentLoaded", () => init());
