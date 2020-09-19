@@ -10,6 +10,23 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/app.css" />
+    <style>
+      #loader {
+        border: 1rem solid #f8f9fa;
+        width: 22rem;
+        height: 22rem;
+        overflow: hidden;
+        animation: spin 1s linear;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
     <title>Congrats</title>
   </head>
   <body>
@@ -17,10 +34,42 @@
       <div class="m-auto py-5">
         <h1>Quick Quiz: Ends</h1>
 
-        <div class="d-flex text-center">
-          <div class="m-auto d-flex">
-            <p class="h3 mr-3">Final Score:</p>
-            <p class="h3 text-secondary finalScore" id="score">0</p>
+        <p class="h3 mr-3">Your Stats:</p>
+
+        <div id="loader" class="m-auto py-5 px-2">
+          <div class="d-flex">
+            <div class="m-auto d-flex">
+              <p class="h3 mr-3">Final Score:</p>
+              <p class="h3 text-secondary finalScore" id="score"></p>
+            </div>
+          </div>
+          <div class="d-flex text-left">
+            <div class="m-auto d-flex">
+              <p class="h5 mr-3">Difficulty:</p>
+              <p class="h3 text-secondary finalScore" id="difficulty"></p>
+            </div>
+          </div>
+          <div class="d-flex text-left">
+            <div class="m-auto d-flex">
+              <p class="h5 mr-3">Category:</p>
+              <p class="h3 text-secondary finalScore" id="category"></p>
+            </div>
+          </div>
+          <div class="d-flex text-left mt-4" style="height: 20px">
+            <div class="m-auto d-flex">
+              <p id="percentageScore" class="h1 mr-3"></p>
+            </div>
+          </div>
+          <div class="progress mt-5" style="width: 70%; margin: 0 auto">
+            <div
+              id="progress-bar"
+              class="progress-bar"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
         </div>
 
@@ -47,7 +96,7 @@
             </div>
           </div>
         </form>
-        <div class="d-flex">
+        <div class="d-flex justify-content-center">
           <a href="/game.html" class="mr-2">
             <button class="btn btn-outline-primary my-1">Play</button>
           </a>

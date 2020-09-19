@@ -83,16 +83,16 @@ const init = (e) => {
       });
       startGame();
     })
-    .catch((err) => {
-      console.error(err);
-    });
+    .catch((err) => console.error(err));
 };
 let startGame = () => {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  // UX for our loader
   game.classList.remove("d-none");
+  quitBtn.classList.remove("d-none");
   loader.classList.add("d-none");
 };
 
@@ -100,13 +100,11 @@ let getNewQuestion = () => {
   if (availableQuestions.length == 0 || questionCounter >= MAX_QUESTION) {
     // make our app persistent by storing in localstorage
     localStorage.setItem("latestScore", score);
-
     // Go to homepage
     return window.location.assign("./end.html");
   }
   questionCounter++;
   questionCounterText.innerText = `${questionCounter}/${MAX_QUESTION}`;
-
   // Get the % score in 2 decimal places
   let percentageScore = (questionCounter / MAX_QUESTION) * 100;
   percentageScore =
@@ -128,6 +126,7 @@ let getNewQuestion = () => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion[`choice${number}`];
   });
+
   // Remove engaged question
   availableQuestions.splice(questionIndex, 1);
   acceptingAnswers = true;
@@ -166,7 +165,11 @@ const incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  init();
+const maxScore = CORRECT_BONUS * MAX_QUESTION;
+localStorage.setItem("maxScore", maxScore);
+const quitBtn = document.querySelector(".quit");
+quitBtn.addEventListener("click", (e) => {
+  availableQuestions = [];
+  getNewQuestion();
 });
+document.addEventListener("DOMContentLoaded", () => init());

@@ -3,9 +3,51 @@ const highScoreList = document.querySelector("#high-scores-list");
 const highScoreBtn = document.querySelector(".high-score-btn");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-highScoreBtn.addEventListener("click", () => {
-  highScoreSection.classList.toggle("d-none");
-});
+// highScoreBtn.addEventListener("click", () => {
+//   highScoreSection.classList.toggle("d-none");
+// });
+var height = highScoreSection.clientHeight;
+var width = highScoreSection.clientWidth;
+
+// initialize them (within highScoreSection.style)
+
+if (screen.width > 750) {
+  highScoreSection.style.height = "30%";
+  highScoreSection.style.width = "30%";
+  highScoreSection.style.opacity = "0";
+
+  highScoreBtn.addEventListener("click", function () {
+    if (highScoreSection.style.visibility == "hidden") {
+      highScoreSection.style.visibility = "visible";
+      highScoreSection.style.opacity = "1";
+      highScoreSection.style.height = "100%";
+      highScoreSection.style.width = "100%";
+    } else {
+      highScoreSection.style.visibility = "hidden";
+      highScoreSection.style.opacity = "0";
+      highScoreSection.style.height = "0";
+      highScoreSection.style.width = "20%";
+    }
+  });
+} else {
+  highScoreSection.style.height = "60%";
+  highScoreSection.style.width = "60%";
+  highScoreSection.style.opacity = "0";
+
+  highScoreBtn.addEventListener("click", function () {
+    if (highScoreSection.style.visibility == "hidden") {
+      highScoreSection.style.visibility = "visible";
+      highScoreSection.style.opacity = "1";
+      highScoreSection.style.height = "100%";
+      highScoreSection.style.width = "100%";
+    } else {
+      highScoreSection.style.visibility = "hidden";
+      highScoreSection.style.opacity = "0";
+      highScoreSection.style.height = "0";
+      highScoreSection.style.width = "70%";
+    }
+  });
+}
 
 let increment = 0;
 highScoreList.innerHTML = highScores
@@ -20,47 +62,15 @@ highScoreList.innerHTML = highScores
   .join("");
 
 // Customize fetch
-// https://opentdb.com/api.php?amount=10&category=9&difficulty=medium
-// const chooseDifficulty
-// const chooseAmount
-// const chooseCategory
 const init = (e) => {
   const playBtn = document.querySelector(".playBtn"),
     catSelect = document.getElementById("selectCategory"),
     numSelect = document.getElementById("selectNumber"),
-    selectDifficulty = document.getElementById("selectDifficulty"),
-    catObject = {
-      random: "random",
-      generalknowledge: 9,
-      books: 10,
-      film: 11,
-      music: 12,
-      musicalsTheaters: 13,
-      television: 14,
-      videoGame: 15,
-      boardGame: 16,
-      scienceNature: 17,
-      computers: 18,
-      mathematics: 19,
-      mythology: 20,
-      sports: 21,
-      geography: 22,
-      history: 23,
-      politics: 24,
-      art: 25,
-      celebrities: 26,
-      animals: 27,
-      vehicles: 28,
-      comics: 29,
-      gadgets: 30,
-      japaneseanimemanga: 31,
-      cartoonsanimations: 32,
-    };
+    selectDifficulty = document.getElementById("selectDifficulty");
 
   playBtn.addEventListener("click", () => {
     // Insert form values in local storage to hand it over
-    // to game.js fetch function
-    // remove whitespace and '&'
+    // to game.js fetch function and remove whitespace and '&'
     const formatCategoryString = catSelect.value
       .toLowerCase()
       .replace(/&/g, "")
@@ -75,10 +85,7 @@ const init = (e) => {
         numSelect: `${numSelect.value}`,
       })
     );
-
     window.document.location = "/game.html";
   });
 };
-document.addEventListener("DOMContentLoaded", () => {
-  init();
-});
+document.addEventListener("DOMContentLoaded", () => init());
