@@ -52,12 +52,41 @@ let currentQuestion = {},
 // Customize fetch request
 const init = (e) => {
   // Use different API for random settings
-  const screenOutRandom =
-    catObject[setCategory] == "random" || setDifficulty == "random"
-      ? `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`
-      : `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&difficulty=${setDifficulty}&type=multiple`;
+  // https://opentdb.com/api.php?amount=10&category=24&type=multiple
+  function screenForRandom() {
+    if (catObject[setCategory] !== "random" && setDifficulty !== "random") {
+      console.log("We both not random");
+      return `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&difficulty=${setDifficulty}&type=multiple`;
+    } else if (
+      catObject[setCategory] == "random" ||
+      setDifficulty == "random"
+    ) {
+      if (catObject[setCategory] == "random" && setDifficulty == "random") {
+        console.log("We both random");
+        return `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`;
+      } else if (
+        catObject[setCategory] == "random" &&
+        setDifficulty != "random"
+      ) {
+        console.log("cat is random");
+        return `https://opentdb.com/api.php?amount=${setNumber}&difficulty=${setDifficulty}&type=multiple`;
+      } else if (
+        catObject[setCategory] != "random" &&
+        setDifficulty == "random"
+      ) {
+        console.log("diff is random");
+        return `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&type=multiple`;
+      }
+    }
+  }
+  // console.log(screenForRandom());
+  // const screenOutRandom =
+  //   catObject[setCategory] == "random" || setDifficulty == "random"
+  //     ? `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`
+  //     : `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&difficulty=${setDifficulty}&type=multiple`;
+  // console.log(screenOutRandom);
   // Populate questions  with Questions from API
-  fetch(screenOutRandom)
+  fetch(screenForRandom())
     .then((res) => res.json())
     .then((loadedQuestions) => {
       console.log(loadedQuestions.results);
