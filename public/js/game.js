@@ -79,12 +79,7 @@ const init = (e) => {
       }
     }
   }
-  // console.log(screenForRandom());
-  // const screenOutRandom =
-  //   catObject[setCategory] == "random" || setDifficulty == "random"
-  //     ? `https://opentdb.com/api.php?amount=${setNumber}&type=multiple`
-  //     : `https://opentdb.com/api.php?amount=${setNumber}&category=${getCatValue}&difficulty=${setDifficulty}&type=multiple`;
-  // console.log(screenOutRandom);
+
   // Populate questions  with Questions from API
   fetch(screenForRandom())
     .then((res) => res.json())
@@ -192,7 +187,7 @@ choices.forEach((choice) => {
 });
 const incrementScore = (num) => {
   score += num;
-  scoreText.innerText = score;
+  scoreText.innerText = `${score}/${setNumber * 10}`;
 };
 const maxScore = CORRECT_BONUS * MAX_QUESTION;
 localStorage.setItem("maxScore", maxScore);

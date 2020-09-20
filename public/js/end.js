@@ -22,14 +22,17 @@ percentageScore.innerText = `${setPercentage}%`;
 progressBar.setAttribute("aria-valuenow", `${setPercentage}`);
 
 if (maxScore == latestScore) {
-  sweetMessage.innerText = "You cracked it!!!";
   progressBar.classList.remove("bg-primary");
-  progressBar.classList.add("bg-success");
-  thumbsUp.classList.remove("d-none");
-} else if (latestScore > 50 && latestScore < maxScore)
-  progressBar.classList.add("bg-primary");
-else if (latestScore < 50) progressBar.classList.add("bg-danger");
+  resultMessage("You cracked it!!!", "fa-thumbs-up", "bg-success");
+} else if (latestScore < 50) resultMessage("Do better", "fa-meh", "bg-danger");
+else resultMessage("Nice Try!!!", "fa-smile", "bg-primary");
 
+function resultMessage(innerText, fa, color, display = "d-none") {
+  sweetMessage.innerText = `${innerText}`;
+  thumbsUp.classList.remove(`${display}`);
+  thumbsUp.classList.add(`${fa}`);
+  progressBar.classList.add(`${color}`);
+}
 finalScore.innerText = latestScore;
 category.innerText = setCategory;
 difficulty.innerText = setDifficulty;
