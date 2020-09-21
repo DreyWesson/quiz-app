@@ -9,7 +9,7 @@ const username = document.getElementById("username"),
   finalScore = document.querySelector(".finalScore"),
   latestScore = localStorage.getItem("latestScore"),
   maxScore = localStorage.getItem("maxScore"),
-  highScore = JSON.parse(localStorage.getItem("highScore")) || [],
+  highScore = JSON.parse(localStorage.getItem("highScores")) || [],
   MAX_HIGH_SCORES = 5,
   valueDelivery = JSON.parse(localStorage.getItem("formFetchValues")),
   setDifficulty = valueDelivery.selectDifficulty,
@@ -50,6 +50,9 @@ const saveHighScore = (e) => {
   highScore.push(score);
   highScore.sort((a, b) => b.score - a.score);
   highScore.splice(5);
-  localStorage.setItem("highScore", JSON.stringify(highScore));
+  localStorage.setItem("highScores", JSON.stringify(highScore));
   window.location.assign("/");
+};
+const checkBlur = (e) => {
+  if (username.value.length > 0) saveHighScore(e);
 };
