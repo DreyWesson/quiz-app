@@ -55,8 +55,8 @@ const saveHighScore = (e) => {
   promptSaved.style.visibility = "visible";
   setTimeout(() => {
     window.location.assign("/");
-  }, 1500);
+  }, 700);
 };
-const checkBlur = (e) => {
-  if (username.value.length > 0) saveHighScore(e);
-};
+// const checkBlur = (e) => {
+//   if (username.value.length > 0) saveHighScore(e);
+// };
