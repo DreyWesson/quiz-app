@@ -9,7 +9,7 @@ const username = document.getElementById("username"),
   finalScore = document.querySelector(".finalScore"),
   latestScore = localStorage.getItem("latestScore"),
   maxScore = localStorage.getItem("maxScore"),
-  highScores = JSON.parse(localStorage.getItem("highScores")) || [],
+  highScore = JSON.parse(localStorage.getItem("highScore")) || [],
   MAX_HIGH_SCORES = 5,
   valueDelivery = JSON.parse(localStorage.getItem("formFetchValues")),
   setDifficulty = valueDelivery.selectDifficulty,
@@ -47,9 +47,9 @@ const saveHighScore = (e) => {
     score: latestScore,
     name: username.value,
   };
-  highScores.push(score);
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.splice(5);
-  localStorage.setItem("highScores", JSON.stringify(highScores));
+  highScore.push(score);
+  highScore.sort((a, b) => b.score - a.score);
+  highScore.splice(5);
+  localStorage.setItem("highScore", JSON.stringify(highScore));
   window.location.assign("/");
 };

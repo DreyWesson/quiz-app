@@ -153,9 +153,40 @@
           <a href="/">
             <button class="btn btn-outline-primary my-1">Home</button>
           </a>
+          <button class="btn btn-outline-primary my-1 high-score-btn">
+            High Scores
+          </button>
         </div>
       </div>
     </div>
+    <div
+      class="container text-center py-4 high-scores-section"
+      style="visibility: hidden"
+    >
+      <h2>High Score List</h2>
+      <p class="h4 text-success">Your top 5 scores</p>
+      <table class="table" style="max-width: 50rem; margin: 0 auto">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="h4">#</th>
+            <th scope="col" class="h4">First</th>
+            <th scope="col" class="h4">Last</th>
+          </tr>
+        </thead>
+        <tbody id="high-scores-list"></tbody>
+      </table>
+      <div class="emptyHighScore d-none">
+        <h2 class="h3 my-3">
+          <i class="far fa-frown 2 mr-3 text-danger"></i>Oops, no high score
+          yet!
+        </h2>
+        <h3 class="h3 my-3">
+          <i class="far fa-smile 2 mr-3 text-success"></i>Click the
+          <strong>Play</strong> button.
+        </h3>
+      </div>
+    </div>
     <script src="/js/end.js"></script>
+    <script src="/js/highscore.js"></script>
   </body>
 </html>
