@@ -51,7 +51,11 @@ const saveHighScore = (e) => {
   highScore.sort((a, b) => b.score - a.score);
   highScore.splice(5);
   localStorage.setItem("highScores", JSON.stringify(highScore));
-  window.location.assign("/");
+  const promptSaved = document.querySelector(".prompt");
+  promptSaved.style.visibility = "visible";
+  setTimeout(() => {
+    window.location.assign("/");
+  }, 1500);
 };
 const checkBlur = (e) => {
   if (username.value.length > 0) saveHighScore(e);
