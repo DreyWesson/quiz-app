@@ -125,7 +125,7 @@ let getNewQuestion = () => {
     // make our app persistent by storing in localstorage
     localStorage.setItem("latestScore", score);
     // Go to homepage
-    return window.location.assign("./end.html");
+    return window.location.assign("/end");
   }
   questionCounter++;
   questionCounterText.innerText = `${questionCounter}/${MAX_QUESTION}`;

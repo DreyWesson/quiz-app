@@ -1,11 +1,20 @@
 const express = require("express"),
   app = express();
+
 app.set("port", process.env.PORT || 3000);
-app.use(express.static(__dirname + "/public"));
-app.use("/views", express.static(__dirname + "/views"));
+
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile("./index.html", { root: __dirname });
 });
+app.get("/game", (req, res) => {
+  res.sendFile("./views/game.html", { root: __dirname });
+});
+app.get("/end", (req, res) => {
+  res.sendFile("./views/end.html", { root: __dirname });
+});
+
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });

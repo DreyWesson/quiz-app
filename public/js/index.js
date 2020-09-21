@@ -22,7 +22,7 @@ const init = (e) => {
         numSelect: `${numSelect.value}`,
       })
     );
-    window.document.location = "../views/game.html";
+    window.document.location = "/game";
   });
 };
 document.addEventListener("DOMContentLoaded", () => init());
